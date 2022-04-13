@@ -1,15 +1,19 @@
-const express = require('express');
+const express=require('express');
 
-const router = express.Router();
-const homeController = require('../controllers/home_controller');
+const router=express.Router();
 
-console.log("router loaded");
+// required home controller module to handle the routes
+const homeController=require('../controllers/home_controller');
 
+console.log('Router loaded');
 
+//for homepage 
 router.get('/',homeController.home);
-router.use('/users',require('./users'));
 
-//for any further routes, access from here
-//router.use('/routerName', require('./routerfile));
+// for adding task
+router.post('/add-task',homeController.add);
 
-module.exports = router;
+//for deleting task 
+router.get('/delete-task',homeController.delete);
+
+module.exports=router;
